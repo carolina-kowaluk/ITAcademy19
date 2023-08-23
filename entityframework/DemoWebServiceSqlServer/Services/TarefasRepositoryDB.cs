@@ -12,6 +12,13 @@ public class TarefasRepositoryDB : ITarefasRepository
         _context = context;
     }
 
+    public async Task<Tarefa> AdicionarAsync(Tarefa tarefa)
+    {
+        await _context.Tarefas.AddAsync(tarefa);
+        await _context.SaveChangesAsync();
+        return tarefa;
+    }
+
     public async Task<Tarefa?> ConsultarPorIdAsync(long id)
     {
         return await _context.Tarefas
