@@ -1,14 +1,15 @@
-using System.Security.AccessControl;
+//define a estrutura dos dados para transferência
+
 namespace DemoCepRest.DTOs;
 
 using System.ComponentModel.DataAnnotations;
-// só contem informação publica 
+
+//valida o formato de cada dado com expressões regulares e retorna mensagem de erro se não estiver de acordo
 public class CepDTO
 {
-    //@ -> string literal ex: @"\n" não é uma nova linha
-    [RegularExpression(@"^\d{8}$", ErrorMessage = "Cep deve ter 8 dígitos")] 
+    [RegularExpression(@"^\d{8}$", ErrorMessage = "Cep deve ter exatamente 8 dígitos")]
     public string Cep {get;set;} = null!;
-    [RegularExpression(@"^[A-Z]{2}$", ErrorMessage = "Estado deve ser uma sigla com 2 letras maiúsculas")]
+    [RegularExpression(@"^[A-Z]{2}$", ErrorMessage = "Estado deve ser uma sigla com exatamente duas letras maiúsculas")]
     public string Estado {get;set;} = null!;
     [StringLength(50, ErrorMessage = "Cidade deve ter no máximo 50 caracteres")]
     public string Cidade {get;set;} = null!;
