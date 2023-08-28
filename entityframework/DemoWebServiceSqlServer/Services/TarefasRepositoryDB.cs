@@ -1,15 +1,25 @@
 namespace DemoWebServiceSqlServer.Services;
+
+using System.Collections.Generic;
+using System.Threading.Tasks;
 using DemoWebServiceSqlServer.Models;
 using Microsoft.EntityFrameworkCore;
 
 public class TarefasRepositoryDB : ITarefasRepository
 {
-
     private readonly TarefaContext _context;
-
     public TarefasRepositoryDB(TarefaContext context)
     {
         _context = context;
+    }
+
+    public async Task AlterarAsync(Tarefa tarefa)
+    {
+        var model = await _context.Tarefas.FindAsync(tarefa.Id);
+        model.Nome = tarefa.Nome; //tenho certeza q nao sera null
+        model.Descricao = tarefa.Descricao;
+        model.Completa = tarefa.Completa;
+        await _context.SaveChangesAsync();
     }
 
     public async Task<Tarefa> AdicionarAsync(Tarefa tarefa)
@@ -18,19 +28,17 @@ public class TarefasRepositoryDB : ITarefasRepository
         await _context.SaveChangesAsync();
         return tarefa;
     }
-
-    public async Task<Tarefa?> ConsultarPorIdAsync(long id)
+    public async Task<Tarefa?> ConsultarPorIdAsync(long Id)
     {
         return await _context.Tarefas
-                       .Where(t => t.Id == id)
+                       .Where(t => t.Id == Id)
                        .FirstOrDefaultAsync();
     }
 
     public async Task<IEnumerable<Tarefa>> ConsultarTodosAsync()
     {
         return await _context.Tarefas
-                        .OrderBy(t => t.Nome)
-                        .ToListAsync();
+                             .OrderBy(t => t.Nome)
+                             .ToListAsync();
     }
-    
 }

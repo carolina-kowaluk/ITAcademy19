@@ -1,13 +1,12 @@
+namespace DemoWebServiceSqlServer.Dtos;
+
 using System.ComponentModel.DataAnnotations;
-using System.Security.AccessControl;
-using System;
-namespace DemoWebServiceSqlServer.DTOs;
-using System.ComponentModel.DataAnnotations;
+
 public class TarefaRequisicaoDto
 {
-    [Required (ErrorMessage = "Nome obrigatório")]
-    [MaxLength(30, ErrorMessage = "max 30 carac")]
-    public string? Nome {get;set;} = null!;
-    [MaxLength(150, ErrorMessage = "max 150 carac")]
-    public string? Descricao {get;set;}
+    [Required(ErrorMessage = "Nome é obrigatório")]
+    [MaxLength(30, ErrorMessage = "Nome no máximo 30 caracteres")]
+    public string? Nome {get; set;}
+    [MaxLength(150, ErrorMessage = "Descricao no máximo 150 caracteres")]
+    public string? Descricao {get; set;}
 }

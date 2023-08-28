@@ -4,12 +4,12 @@ using DemoWebServiceSqlServer.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+// configurando o acesso ao bd sqlServer:
 builder.Services.AddDbContext<TarefaContext>(opcoes => {
-    opcoes.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-    opcoes.EnableSensitiveDataLogging().LogTo(Console.WriteLine);
+    opcoes.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")); //pega do appsettings.json
+    opcoes.EnableSensitiveDataLogging().LogTo(Console.WriteLine); //só em amb dev!
 });
-
+//registrar obj:
 builder.Services.AddScoped<ITarefasRepository,TarefasRepositoryDB>();
 
 builder.Services.AddControllers();

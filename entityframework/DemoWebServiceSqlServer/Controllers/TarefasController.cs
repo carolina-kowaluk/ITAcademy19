@@ -1,4 +1,3 @@
-using System.Reflection;
 namespace DemoWebServiceSqlServer.Controllers;
 
 using Microsoft.AspNetCore.Mvc;
@@ -37,7 +36,7 @@ public class TarefasController : ControllerBase
         return TarefaRespostaDto.ParaDto(tarefa);
     }
 
-    //POST.../api/v1/tarefas
+    //POST .../api/v1/tarefas
     [HttpPost]
     public async Task<ActionResult<TarefaRespostaDto>> PostNovaTarefa(TarefaRequisicaoDto dto)
     {
@@ -46,6 +45,8 @@ public class TarefasController : ControllerBase
         model.Descricao = dto.Descricao;
         model.Completa = false;
         var novaTarefa = await _repository.AdicionarAsync(model);
-        return CreatedAtAction(nameof(GetPoId), new {id = novaTarefa.Id}, TarefaRespostaDto.ParaDto(novaTarefa));
+        return CreatedAtAction(nameof(GetPorId), new {id = novaTarefa.Id}, TarefaRespostaDto.ParaDto(novaTarefa));
     }
+
+    
 }
