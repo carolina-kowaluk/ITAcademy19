@@ -17,10 +17,10 @@ public class LojinhaContext : DbContext
     {   
     }
 
-    protected override void OnModelCreating (ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        modelBuilder.Entity<Cliente> (entityBuilder => {
+        modelBuilder.Entity<Cliente>(entityBuilder => {
             entityBuilder.Property(e => e.Nome).HasMaxLength(30);
             entityBuilder.Property(e => e.Email).HasMaxLength(50);
             entityBuilder.Property(e => e.Telefone).HasMaxLength(8);

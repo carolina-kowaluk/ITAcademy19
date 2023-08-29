@@ -2,6 +2,8 @@ namespace DemoLojinha.Services;
 
 using Microsoft.EntityFrameworkCore;
 using DemoLojinha.Models;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 public class ProdutosRepositoryEF : IProdutosRepository
 {
