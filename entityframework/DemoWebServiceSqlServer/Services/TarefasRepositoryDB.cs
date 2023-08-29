@@ -1,7 +1,5 @@
 namespace DemoWebServiceSqlServer.Services;
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using DemoWebServiceSqlServer.Models;
 using Microsoft.EntityFrameworkCore;
 
