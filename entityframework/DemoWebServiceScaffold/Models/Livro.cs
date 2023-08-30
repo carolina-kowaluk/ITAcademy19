@@ -11,5 +11,5 @@ public partial class Livro
 
     public virtual ICollection<Emprestimo> Emprestimos { get; set; } = new List<Emprestimo>();
 
-    public virtual ICollection<Autor> Idautors { get; set; } = new List<Autor>();
+    public virtual ICollection<Autor> Autores { get; set; } = new List<Autor>();
 }

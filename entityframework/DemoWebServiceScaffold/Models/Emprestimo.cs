@@ -7,13 +7,13 @@ public partial class Emprestimo
 {
     public int Id { get; set; }
 
-    public DateTime Datadevolucao { get; set; }
+    public DateTime DataDevolucao { get; set; }
 
-    public DateTime Dataretirada { get; set; }
+    public DateTime DataRetirada { get; set; }
 
     public bool Entregue { get; set; }
 
-    public int Idlivro { get; set; }
+    public int IdLivro { get; set; }
 
-    public virtual Livro IdlivroNavigation { get; set; } = null!;
+    public virtual Livro Livro { get; set; } = null!;
 }

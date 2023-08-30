@@ -16,7 +16,7 @@ public partial class BibliotecaContext : DbContext
     {
     }
 
-    public virtual DbSet<Autor> Autors { get; set; }
+    public virtual DbSet<Autor> Autores { get; set; }
 
     public virtual DbSet<Emprestimo> Emprestimos { get; set; }
 
@@ -32,10 +32,10 @@ public partial class BibliotecaContext : DbContext
             entity.ToTable("Autor");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Primeironome)
+            entity.Property(e => e.PrimeiroNome)
                 .HasMaxLength(10)
                 .HasColumnName("primeironome");
-            entity.Property(e => e.Ultimonome)
+            entity.Property(e => e.UltimoNome)
                 .HasMaxLength(10)
                 .HasColumnName("ultimonome");
         });
@@ -47,17 +47,17 @@ public partial class BibliotecaContext : DbContext
             entity.Property(e => e.Id)
                 .ValueGeneratedNever()
                 .HasColumnName("id");
-            entity.Property(e => e.Datadevolucao)
+            entity.Property(e => e.DataDevolucao)
                 .HasColumnType("date")
                 .HasColumnName("datadevolucao");
-            entity.Property(e => e.Dataretirada)
+            entity.Property(e => e.DataRetirada)
                 .HasColumnType("date")
                 .HasColumnName("dataretirada");
             entity.Property(e => e.Entregue).HasColumnName("entregue");
-            entity.Property(e => e.Idlivro).HasColumnName("idlivro");
+            entity.Property(e => e.IdLivro).HasColumnName("idlivro");
 
-            entity.HasOne(d => d.IdlivroNavigation).WithMany(p => p.Emprestimos)
-                .HasForeignKey(d => d.Idlivro)
+            entity.HasOne(d => d.Livro).WithMany(p => p.Emprestimos)
+                .HasForeignKey(d => d.IdLivro)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Emprestimo_Livro");
         });
@@ -73,7 +73,7 @@ public partial class BibliotecaContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("titulo");
 
-            entity.HasMany(d => d.Idautors).WithMany(p => p.Idlivros)
+            entity.HasMany(d => d.Autores).WithMany(p => p.Livros)
                 .UsingEntity<Dictionary<string, object>>(
                     "AutorLivro",
                     r => r.HasOne<Autor>().WithMany()

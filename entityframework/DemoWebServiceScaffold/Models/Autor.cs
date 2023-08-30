@@ -7,9 +7,9 @@ public partial class Autor
 {
     public int Id { get; set; }
 
-    public string Primeironome { get; set; } = null!;
+    public string PrimeiroNome { get; set; } = null!;
 
-    public string Ultimonome { get; set; } = null!;
+    public string UltimoNome { get; set; } = null!;
 
-    public virtual ICollection<Livro> Idlivros { get; set; } = new List<Livro>();
+    public virtual ICollection<Livro> Livros { get; set; } = new List<Livro>();
 }
