@@ -5,16 +5,17 @@ using DemoLojinha.Models;
 
 public class LojinhaContext : DbContext
 {
-    //regra de mapeamento padrão
     public DbSet<Cliente> Clientes {get;set;} = null!;
-    public DbSet<Produto> Prodtos {get;set;} = null!;
+    public DbSet<Produto> Produtos {get;set;} = null!;
     public DbSet<Pedido> Pedidos {get;set;} = null!;
+
     public LojinhaContext()
     {
     }
 
-    public LojinhaContext(DbContextOptions<LojinhaContext> opcoes) : base(opcoes)
-    {   
+    public LojinhaContext(DbContextOptions<LojinhaContext> opcoes)
+        : base(opcoes)
+    {
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

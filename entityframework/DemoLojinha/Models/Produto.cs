@@ -1,6 +1,6 @@
 namespace DemoLojinha.Models;
 
-public class Produto 
+public class Produto
 {
     public int Id {get;set;}
     public string Nome {get;set;} = null!;
@@ -9,5 +9,4 @@ public class Produto
     //relacionamento N-N com Pedido
     public ICollection<Pedido> Pedidos {get;set;} = null!;
     public List<Item> Itens {get;set;} = null!;
-
 }

@@ -4,5 +4,5 @@ using DemoLojinha.Models;
 
 public interface IClientesRepository
 {
-    Task<Cliente?> ConsultaPorIdAsync(int id);
+    Task<Cliente?> ConsultarPorIdAsync(int id);
 }

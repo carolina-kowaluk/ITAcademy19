@@ -2,6 +2,7 @@ namespace DemoLojinha.Services;
 
 using Microsoft.EntityFrameworkCore;
 using DemoLojinha.Models;
+using System.Threading.Tasks;
 
 public class ClientesRepositoryEF : IClientesRepository
 {
@@ -15,5 +16,5 @@ public class ClientesRepositoryEF : IClientesRepository
     public async Task<Cliente?> ConsultarPorIdAsync(int id)
     {
         return await _context.Clientes.FindAsync(id);
-    } 
+    }
 }
