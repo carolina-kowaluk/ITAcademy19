@@ -1,0 +1,29 @@
+:root {
+    --burly: rgb(227, 206, 180);
+    --white: white;
+    --black: black;
+}
+
+body {
+    background: var(--bg);
+    color: var(--fontColor);
+    font-family: helvetica;
+}
+
+li {
+    list-style: circle;
+}
+/* comentario */
+.list {
+    list-style: square;
+}
+
+.light-theme {
+    --bg: var(--burly);
+    --fontColor: var(--black);
+}
+
+.dark-theme {
+    --bg: var(--black);
+    --fontColor: var(--burly);
+}
