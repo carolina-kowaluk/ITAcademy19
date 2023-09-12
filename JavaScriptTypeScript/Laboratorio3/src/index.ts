@@ -28,6 +28,26 @@ class Cofrinho {
         }
         return total;
     }
+    valorMenorMoeda() : number {
+        let menor = 0;
+        for (let i = 0; i < this.moedas.length-1; i++) {
+            menor = this.moedas[i].valor;
+            if(menor > this.moedas[i+1].valor){
+                menor = this.moedas[i+1].valor;
+            }
+        }
+        return menor;
+    }
+    menorMoeda() : Moeda {
+        let moedaMenor: Moeda = this.moedas[0];
+        for (let i = 0; i < this.moedas.length-1; i++) {
+            const moedaAtual = this.moedas[i];
+            if (moedaAtual.valor < moedaMenor.valor) {
+                moedaMenor = moedaAtual;
+            }
+        }
+        return moedaMenor;
+    }
 }
 
 // Criar algumas moedas e um cofrinho
